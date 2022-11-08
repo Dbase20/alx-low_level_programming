@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "main.h"
 
 /**
@@ -8,31 +9,33 @@
  *
  * Return: 0
  */
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
-	int i, n, sum = 0;
-	char *flag;
+	int sum, num, i, j, k;
 
-	if (argc < 2)
-	{
-		printf("0\n");
-		return (0);
-	}
+	sum = 0;
 
-	for (i = 1; argv[i]; i++)
+	for (i = 1; i < argc; i++)
 	{
-		n = strtol(argv[i], &flag, 10);
-		if (*flag)
+		for (j = 0; argv[i][j] != '\0'; j++)
 		{
-			printf("Error\n");
-			return (1);
-		}
-		else
-		{
-			sum += n;
+			if (argv[i][j] > '9' || argv[i][j] < '0')
+			{
+				puts("Error");
+				return (1);
+			}
 		}
 	}
+
+	for (k = 1; k < argc; k++)
+	{
+		num = atoi(argv[k]);
+		if (num >= 0)
+		{
+			sum += num;
+		}
+	}
+
 	printf("%d\n", sum);
-
 	return (0);
 }
