@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include "0-print_name.c"
+#include <stdio.h>
 
 /**
  * print_name - prints a name
